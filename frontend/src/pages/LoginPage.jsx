@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import api from '../utils/api';
+import { useNavigate } from 'react-router-dom'; // Import navigate for navigation
 
 const LoginForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const navigate = useNavigate(); // Use navigate for navigation
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent default form submission
     try {
@@ -36,7 +37,7 @@ const LoginForm = () => {
       },
     };
     localStorage.setItem('user', JSON.stringify(guestUser)); // Save guest user data
-    window.location.href = "/dashboard"; // Navigate to the dashboard on successful login
+   navigate("/dashboard")
   };
 
   return (

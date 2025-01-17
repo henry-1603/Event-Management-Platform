@@ -8,13 +8,13 @@ WORKDIR /app/backend
 COPY backend/package*.json ./backend/
 
 # Install backend dependencies
-RUN cd backend && npm install
+RUN npm install
 
 # Copy the entire backend directory to the working directory
-COPY backend/ ./backend/
+COPY backend ./backend
 
 # Expose the port the app runs on
 EXPOSE 5001
 
 # Command to run the application
-CMD ["node", "backend/server.js"]  # Update this if your main file is different
+CMD ["node", "backend/server.js" , "npm" , "start"]  # Update this if your main file is different
